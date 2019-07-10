@@ -7,6 +7,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.util.ExecutorEventListener;
+
+
 import java.util.List;
 
 public class ExpenseListAdapter extends RecyclerView.Adapter<ExpenseListAdapter.ViewHolder> {
@@ -24,6 +34,10 @@ public class ExpenseListAdapter extends RecyclerView.Adapter<ExpenseListAdapter.
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row, parent, false);
         return new ViewHolder(view);
     }
+
+//    public void deleteItem(int position) {
+//        getSnapshots().getSnapshot(position).getReference().delete();
+//    }
 
     public void removeItem(int position) {
         expenseList.remove(position);

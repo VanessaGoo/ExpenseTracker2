@@ -53,6 +53,20 @@ public class MainActivity extends AppCompatActivity {
         tvBalance = findViewById(R.id.tvBalance);
         btnShow = findViewById(R.id.buttonShow);
 
+//        db.collection("balance").document("A9h7kHz4z1nT2UlqDsW9")
+//                .set(tvBalance)
+//                .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                    @Override
+//                    public void onSuccess(Void aVoid) {
+//                    }
+//                })
+//                .addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                    }
+//                });
+
+
         btnShow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,27 +79,37 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent l = new Intent(MainActivity.this, AddExpense.class);
-                startActivity(l);
+                startActivityForResult(l, 1);
 
             }
         });
         ivSubtract.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent l = new Intent(MainActivity.this, SubstractExpense.class);
-                startActivity(l);
+                Intent k = new Intent(MainActivity.this, SubstractExpense.class);
+                startActivity(k);
             }
         });
     }
         @Override
-        protected void onResume() {
-            super.onResume();
-            Intent intentRecived = getIntent();
-            int dollar = intentRecived.getIntExtra("dollor", 0);
-            //   int dollars = Integer.parseInt(dollar);
-            balance += Integer.parseInt(tvBalance.getText().toString()) + dollar;
+        protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1){
+            if(resultCode == 1) {
+                int dollar = data.getIntExtra("dollor", 0);
+                //   int dollars = Integer.parseInt(dollar);
+                int current = Integer.parseInt(tvBalance.getText().toString());
+                balance = current + dollar;
+                tvBalance.setText(String.valueOf(balance));
 
-            tvBalance.setText(String.valueOf(balance));
+            } if (resultCode == 2){
+                int dollar = data.getIntExtra("dollor", 0);
+                //   int dollars = Integer.parseInt(dollar);
+                int current = Integer.parseInt(tvBalance.getText().toString());
+                balance = current - dollar;
 
+                tvBalance.setText(String.valueOf(balance));
+            }
+        }
     }
 }

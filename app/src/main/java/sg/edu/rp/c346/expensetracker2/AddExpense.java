@@ -71,14 +71,12 @@ public class AddExpense extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent l = new Intent(AddExpense.this, ShowExpenses.class);
-                startActivity(l);
-
                 // Intent for tv Balance
-                Intent i = new Intent(AddExpense.this, MainActivity.class);
+                Intent i = new Intent();
                 int moneyIntent = Integer.parseInt(etmoney.getText().toString());
                 i.putExtra("dollor", moneyIntent);
-                startActivity(i);
+                setResult(1, i);
+                finish();
 
                 final String money2 = etmoney.getText().toString().trim();
                 final String category2 = etcategory.getText().toString().trim();
@@ -111,6 +109,7 @@ public class AddExpense extends AppCompatActivity {
                         }
                     });
                 }
+                finish();
             }
         });
         btnCancel.setOnClickListener(new View.OnClickListener() {
@@ -118,6 +117,7 @@ public class AddExpense extends AppCompatActivity {
             public void onClick(View v) {
                 Intent l = new Intent(AddExpense.this, MainActivity.class);
                 startActivity(l);
+                finish();
             }
         });
     }

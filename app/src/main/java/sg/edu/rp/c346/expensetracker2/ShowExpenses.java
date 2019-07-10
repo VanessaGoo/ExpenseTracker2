@@ -87,6 +87,11 @@ public class ShowExpenses extends AppCompatActivity {
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
                 expenseListAdapter.removeItem(viewHolder.getAdapterPosition());
 
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+                DocumentReference expenseRef = db.collection("expense").document();
+                expenseRef.delete();
+
             }
         }).attachToRecyclerView(mMainList);
     }
