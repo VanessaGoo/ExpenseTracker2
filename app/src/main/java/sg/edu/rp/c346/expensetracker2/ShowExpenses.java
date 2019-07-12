@@ -71,8 +71,8 @@ public class ShowExpenses extends AppCompatActivity {
                         Expense expense = doc.getDocument().toObject(Expense.class);
                         expenseList.add(expense);
 
-                        expenseListAdapter.notifyDataSetChanged();
-                    }
+                    expenseListAdapter.notifyDataSetChanged();
+                }
                 }
             }
         });

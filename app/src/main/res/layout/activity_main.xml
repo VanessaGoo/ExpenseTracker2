@@ -81,7 +81,7 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="317dp" />
+        android:layout_height="277dp" />
 
     <Button
         android:id="@+id/buttonShow"

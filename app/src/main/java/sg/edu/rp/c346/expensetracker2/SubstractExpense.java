@@ -70,7 +70,7 @@ public class SubstractExpense extends AppCompatActivity {
                 // Intent for tv Balance
                 Intent i = new Intent();
                 int moneyIntent = Integer.parseInt(etmoney.getText().toString());
-                i.putExtra("dollor", moneyIntent);
+                i.putExtra("dollors", moneyIntent);
                 setResult(2, i);
                 finish();
 
@@ -94,7 +94,7 @@ public class SubstractExpense extends AppCompatActivity {
                             .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
-                                    Toast.makeText(SubstractExpense.this, "Expense Added", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(SubstractExpense.this, "Expense Subtracted", Toast.LENGTH_LONG).show();
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                         @Override

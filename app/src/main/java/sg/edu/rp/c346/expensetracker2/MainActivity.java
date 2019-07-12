@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent k = new Intent(MainActivity.this, SubstractExpense.class);
-                startActivity(k);
+                startActivityForResult(k, 2);
             }
         });
     }
@@ -101,9 +101,10 @@ public class MainActivity extends AppCompatActivity {
                 int current = Integer.parseInt(tvBalance.getText().toString());
                 balance = current + dollar;
                 tvBalance.setText(String.valueOf(balance));
-
-            } if (resultCode == 2){
-                int dollar = data.getIntExtra("dollor", 0);
+            }
+        } else if (requestCode == 2) {
+            if (resultCode == 2) {
+                int dollar = data.getIntExtra("dollors", 0);
                 //   int dollars = Integer.parseInt(dollar);
                 int current = Integer.parseInt(tvBalance.getText().toString());
                 balance = current - dollar;
